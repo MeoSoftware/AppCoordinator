@@ -30,13 +30,16 @@ class BaseCoordinator: Coordinator {
         if let coordinator = coordinator as? BaseCoordinator, !coordinator.childCoordinators.isEmpty {
             coordinator.childCoordinators
                 .filter { $0 !== coordinator }
-                .forEach { $0.removeDependency($0) }
+                .forEach { coordinator.removeDependency($0) }
         }
         
         // Clear coordinator
         for (index, element) in childCoordinators.enumerated() where element === coordinator {
-            child
+            childCoordinators.remove(at: index)
         }
-        
+    }
+    
+    func start() {
+        fatalError("Need to override \(#function) in \(self)")
     }
 }
