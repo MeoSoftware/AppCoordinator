@@ -22,6 +22,7 @@ class ApplicationCoordinator: BaseCoordinator {
     
     func runItemFlow() {
         let coordinator = coordinatorFactory.makeItemCoordinator(router: router)
+        addDependency(coordinator)
         coordinator.start()
     }
 }

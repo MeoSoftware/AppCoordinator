@@ -32,7 +32,7 @@ class Router: Routable {
     
     func push(_ module: Presentable?, animated: Bool) {
         guard let controller = module?.toPresent() else { return }
-        guard controller is UINavigationController else { assertionFailure("Deprecated push UINavigationController."); return }
+        guard controller is UINavigationController == false else { assertionFailure("Deprecated push UINavigationController."); return }
         
         rootViewController?.pushViewController(controller, animated: animated)
     }
